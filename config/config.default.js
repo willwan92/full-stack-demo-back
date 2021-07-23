@@ -10,7 +10,14 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  const config = exports = {
+    mongoose: {
+      client: {
+        url: 'mongodb://127.0.0.1:27017/demo',
+        options: {}
+      }
+    }
+  };
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1625726121147_1965';
@@ -31,5 +38,5 @@ module.exports = appInfo => {
         enable:false
       }
     }
-  };
+  }
 };
