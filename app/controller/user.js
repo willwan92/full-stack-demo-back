@@ -5,6 +5,38 @@ const BaseController = require('./base')
 const HashSalt = 'will@wan-=[]'
 class UserController extends BaseController {
 
+  /**
+   * 登录
+   */
+   async login() {
+    const { ctx, app } = this
+    const { nickname, password } = ctx.request.body
+    const user = await ctx.model.User.findOne({
+      nickname,
+      password: md5(password + HashSalt)
+    })
+    // 登录成功返回token、昵称和邮箱
+    if (user) {
+      // 生成token
+      const { email } = user
+      const token = app.jwt.sign({
+        email,
+        nickname,
+        _id: user._id
+      }, app.jwt.secret, {
+        expiresIn: ' 60'
+      })
+      this.success({
+        token,
+        nickname,
+        userId: user._id
+      })
+    } else {
+      this.error('用户名或密码错误')
+    }
+    
+  }
+
   async checkEmail(email) {
     const { ctx } = this
     const user = await ctx.model.User.findOne({ email })
@@ -43,13 +75,16 @@ class UserController extends BaseController {
     }
   }
 
+  /**
+   * 获取用户信息
+   */
   async info() {
     const { ctx } = this
-    const userId = ctx.request.search.userId
+    const { userId } = ctx.request.query
     if (!userId) {
       this.error('参数错误')
     } else {
-      const user = await ctx.model.User.findOne(user => user._id === userId)
+      const user = await ctx.model.User.findOne({ _id: userId })
       this.success(user)
     }
   }

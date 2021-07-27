@@ -8,4 +8,5 @@ module.exports = app => {
   router.get('/user/captcha', controller.user.captcha);
   router.get('/user/info', controller.user.info);
   router.post('/user/create', controller.user.create);
+  router.post('/user/login', controller.user.login);
 };
