@@ -1,3 +1,5 @@
+'use strict';
+
 const Service = require('egg').Service;
 const svgCaptcha = require('svg-captcha');
 
@@ -7,11 +9,11 @@ class ToolsService extends Service {
       size: 4,
       noise: 2,
       color: true,
-      background: 'pink'
-    })
+      background: 'pink',
+    });
 
-    return captcha
+    return captcha;
   }
 }
 
-module.exports = ToolsService
+module.exports = ToolsService;

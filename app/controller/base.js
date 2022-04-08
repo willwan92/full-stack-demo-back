@@ -7,15 +7,15 @@ class BaseController extends Controller {
     const { ctx } = this;
     ctx.body = {
       code: 0,
-      data
+      data,
     };
   }
 
-  async message( message = '' ) {
+  async message(message = '') {
     const { ctx } = this;
     ctx.body = {
       code: 0,
-      message
+      message,
     };
   }
 
@@ -23,7 +23,7 @@ class BaseController extends Controller {
     const { ctx } = this;
     ctx.body = {
       code,
-      message
+      message,
     };
   }
 }
