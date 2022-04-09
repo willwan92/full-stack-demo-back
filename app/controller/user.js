@@ -54,10 +54,11 @@ class UserController extends BaseController {
    */
   async create() {
     const { ctx } = this;
-    const { nickname, email, password, captcha } = ctx.request.body;
-    if (captcha.toLocaleLowerCase() !== ctx.session.captcha.toLocaleLowerCase()) {
-      this.error('验证码错误');
-    } else {
+    // const { nickname, email, password, captcha } = ctx.request.body;
+    const { nickname, email, password } = ctx.request.body;
+  //   if (captcha.toLocaleLowerCase() !== ctx.session.captcha.toLocaleLowerCase()) {
+  //     this.error('验证码错误');
+  //   } else {
       // 邮箱和昵称不能重复
       if (await this.checkEmail(email)) {
         return this.error('该邮箱已经注册过');
@@ -75,6 +76,15 @@ class UserController extends BaseController {
         this.message('注册成功');
       }
     }
+  // }
+
+  /**
+   * 获取用户信息
+   */
+   async getUserList() {
+    const { ctx } = this;
+    const user = await ctx.model.User.find({});
+    this.success(user);
   }
 
   /**

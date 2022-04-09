@@ -8,6 +8,7 @@ module.exports = app => {
   const jwt = app.middleware.jwt({ app });
   router.get('/user/captcha', controller.user.captcha);
   router.get('/user/info', jwt, controller.user.info);
+  router.get('/user/list', controller.user.getUserList);
   router.post('/user/create', controller.user.create);
   router.post('/user/login', controller.user.login);
 };
