@@ -2,7 +2,7 @@ module.exports = {
   createUserRequest: {
     nickname: {
       type: 'string', required: true, description: '昵称'
-      , example: '18801731528', format: /^1[34578]\d{9}$/,
+      , example: 'will',
     },
     password: {
       type: 'string', required: true, description: '密码'
@@ -10,7 +10,7 @@ module.exports = {
     },
     email: {
       type: 'string', required: true, description: '邮箱'
-      , example: 'abc@163.com'
+      , example: 'abc@163.com', format: /^\w+@[\da-z\.-]+\.([a-z]{2,6}|[\u2E80-\u9FFF]{2,3})$/
     },
   },
 }

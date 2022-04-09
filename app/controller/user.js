@@ -54,6 +54,8 @@ class UserController extends BaseController {
    */
   async create() {
     const { ctx } = this;
+    // 如果参数错误，会自动返回，不用自己判断
+    ctx.validate(ctx.rule.createUserRequest);
     // const { nickname, email, password, captcha } = ctx.request.body;
     const { nickname, email, password } = ctx.request.body;
   //   if (captcha.toLocaleLowerCase() !== ctx.session.captcha.toLocaleLowerCase()) {
