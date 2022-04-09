@@ -13,8 +13,13 @@
 // };
 
 exports.mongoose = {
-  enalbe:true,
-  package:'egg-mongoose'
+  enalbe: true,
+  package: 'egg-mongoose'
+}
+
+exports.swaggerdoc = {
+  enable: true,
+  package: 'egg-swagger-doc-feat',
 }
 
 exports.jwt = {

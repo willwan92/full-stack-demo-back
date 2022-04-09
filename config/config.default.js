@@ -17,6 +17,21 @@ module.exports = appInfo => {
         options: {}
       }
     },
+    swaggerdoc: {
+      dirScanner: './app/controller',
+        apiInfo: {
+        title: '官网管理后台接⼝',
+        description: '官网管理后台接⼝ swagger-ui for egg',
+        version: '1.0.0',
+      },
+      schemes: ['http', 'https'],
+      consumes: ['application/json'],
+      produces: ['application/json'],
+      enableSecurity: false,
+      // enableValidate: true,
+      routerMap: true,
+      enable: true,
+    },
     jwt: {
       secret: 'willwan92'
     }
