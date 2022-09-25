@@ -20,9 +20,9 @@ module.exports = appInfo => {
     swaggerdoc: {
       dirScanner: './app/controller',
         apiInfo: {
-        title: '官网管理后台接⼝',
-        description: '官网管理后台接⼝ swagger-ui for egg',
-        version: '1.0.0',
+        title: '管理后台接⼝',
+        description: '管理后台接⼝ swagger-ui for egg',
+        version: '0.0.1',
       },
       schemes: ['http', 'https'],
       consumes: ['application/json'],

@@ -3,6 +3,10 @@ const md5 = require('md5');
 const BaseController = require('./base');
 // 用来对密码进行二次加密
 const HashSalt = 'will@wan-=[]';
+
+/**
+ * @Controller user
+ */
 class UserController extends BaseController {
 
   /**
@@ -81,7 +85,8 @@ class UserController extends BaseController {
   // }
 
   /**
-   * 获取用户信息
+   * @Router get /user/list
+   * @Response 200 baseResponse ok
    */
    async getUserList() {
     const { ctx } = this;
